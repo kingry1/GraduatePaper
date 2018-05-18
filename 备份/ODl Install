@@ -1,0 +1,23 @@
+一、ODL安装步骤
+1.
+wget https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.3.3-Lithium-SR3/distribution-karaf-0.3.3-Lithium-SR3.zip
+
+2.
+unzip distribution-karaf-0.3.3-Lithium-SR3.zip
+
+3.
+cd /distribution-karaf-0.3.3-Lithium-SR3/bin/./karaf
+
+二、 启动虚拟机是执行以下命令，以启动ovs:
+ovsdb-server --remote=punix:/usr/local/var/run/openvswitch/db.sock \
+                     --remote=db:Open_vSwitch,Open_vSwitch,manager_options \
+                     --private-key=db:Open_vSwitch,SSL,private_key \
+                     --certificate=db:Open_vSwitch,SSL,certificate \
+                     --bootstrap-ca-cert=db:Open_vSwitch,SSL,ca_cert \
+                     --pidfile --detach
+ovs-vsctl --no-wait init
+ovs-vswitchd --pidfile --detach
+
+三、运行自定义拓扑脚本的命令
+sudo mn --custom mytopo.py --topo mytopo --mac
+
