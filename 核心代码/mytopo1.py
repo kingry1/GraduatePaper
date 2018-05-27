@@ -38,7 +38,6 @@ def initTopo(filePath):
 
 class MyTopo( Topo ):
     "Simple topology example."
-
     def __init__( self ):
         "Create custom topo."
         # Initialize topology
